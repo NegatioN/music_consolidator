@@ -4,6 +4,7 @@ import youtube_dl
 from gmusicapi import Musicmanager
 import argparse
 import eyed3
+import os
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--link', dest="link", help='A link to port', required=True)
@@ -55,6 +56,7 @@ def main():
     yt.download_audio(config.link)
     add_audio_metadata("{}/single.mp3".format(savepath), config.artist, config.title)
     gm.upload_audio("{}/single.mp3".format(savepath))
+    os.remove("{}/single.mp3".format(savepath))
 
 
 def add_audio_metadata(filename, artist, title):
