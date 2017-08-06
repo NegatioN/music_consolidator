@@ -6,12 +6,20 @@ import argparse
 import eyed3
 import os
 
+def make_unicode(s):
+    try:
+        unicode
+    except NameError:
+        return s
+    return unicode(s, "utf-8")
+
 parser = argparse.ArgumentParser()
 parser.add_argument('--link', dest="link", help='A link to port', required=True)
 parser.add_argument('--auth', dest="auth", default="gmusic.cred", help='Path to oauth-file')
-parser.add_argument('--artist', dest="artist", type=lambda s: unicode(s, 'utf8'), help='Name of artist of song', required=True)
-parser.add_argument('--title', dest="title", type=lambda s: unicode(s, 'utf8'), help='Name of song', required=True)
+parser.add_argument('--artist', dest="artist", type=lambda s: make_unicode(s), help='Name of artist of song', required=True)
+parser.add_argument('--title', dest="title", type=lambda s: make_unicode(s), help='Name of song', required=True)
 config = parser.parse_args()
+
 
 class Youtube:
     def __init__(self, savepath):
