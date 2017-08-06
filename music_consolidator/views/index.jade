@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  h1= title
+    div
+      form(action='/signup',method='post')
+        div(data-role='fieldcontain')
+          fieldset(data-role='controlgroup')
+            label(for='link') link
+               input(id='link',type='text',value='',placeholder='ex: https://www.youtube.com/mylink',name='link')
+        div#artistdiv(data-role='fieldcontain')
+          fieldset(data-role='controlgroup')
+            label(for='artist') artist
+               input(id='artist',type='text',value='',name='artist')
+        div(id='title',data-role='fieldcontain')
+          fieldset(data-role='controlgroup')
+            label(for='title') title
+               input(id='title',type='text',value='',name='title')
+        div(data-role='fieldcontain')
+          input(type='submit',value='Transfer Song',data-transition='fade', data-theme='c')
