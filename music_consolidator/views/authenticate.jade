@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  a(href="https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fmusicmanager&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&response_type=code&client_id=652850857958.apps.googleusercontent.com&access_type=offline") Get credentials
+  div
+    form(action='/authenticate',method='post')
+      div(data-role='fieldcontain')
+        fieldset(data-role='controlgroup')
+          label(for='auth') auth
+             input(id='auth',type='text',value='',name='auth')
+      div(data-role='fieldcontain')
+        input(type='submit',value='Add authentication',data-transition='fade', data-theme='c')

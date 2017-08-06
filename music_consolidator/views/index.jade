@@ -1,7 +1,8 @@
 extends layout
 
 block content
-  h1= title
+    h1= title
+    a(href="/auth") Authenticate your user
     div
       form(action='/signup',method='post')
         div(data-role='fieldcontain')

@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 import youtube_dl
 from gmusicapi import Musicmanager
@@ -9,8 +9,8 @@ import os
 parser = argparse.ArgumentParser()
 parser.add_argument('--link', dest="link", help='A link to port', required=True)
 parser.add_argument('--auth', dest="auth", default="gmusic.cred", help='Path to oauth-file')
-parser.add_argument('--artist', dest="artist", help='Name of artist of song', required=True)
-parser.add_argument('--title', dest="title", help='Name of song', required=True)
+parser.add_argument('--artist', dest="artist", type=lambda s: unicode(s, 'utf8'), help='Name of artist of song', required=True)
+parser.add_argument('--title', dest="title", type=lambda s: unicode(s, 'utf8'), help='Name of song', required=True)
 config = parser.parse_args()
 
 class Youtube:
@@ -38,8 +38,9 @@ class GoogleMusic:
     def __init__(self):
         self.api = Musicmanager()
         try:
+            print(os.getcwd())
             if not self.api.login(oauth_credentials=config.auth):
-                self.api.perform_oauth(storage_filepath=config.auth, open_browser=True)
+                self.api.perform_oauth(storage_filepath=config.auth, open_browser=False)
                 self.api.login(oauth_credentials=config.auth)
         except:
             pass
