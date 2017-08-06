@@ -23,13 +23,13 @@ router.post('/authenticate', function(req,res){
 });
 
 function consolidate_music(link, artist, title){
-    const cli_call = `python ../consolidate.py --link \"${link}\" --artist \"${artist}\" --title \"${title}\" --auth \"${appDir}/gmusic.creds\"`;
+    const cli_call = `python ${appDir}/../../consolidate.py --link \"${link}\" --artist \"${artist}\" --title \"${title}\" --auth \"${appDir}/gmusic.creds\"`;
     console.log(cli_call);
     execSync(cli_call);
 }
 
 function authenticate(auth_code){
-    const cli_call = `python ../authenticate.py --code \"${auth_code}\" --path \"${appDir}/gmusic.creds\"`;
+    const cli_call = `python ${appDir}/../../authenticate.py --code \"${auth_code}\" --path \"${appDir}/gmusic.creds\"`;
     console.log(cli_call);
     execSync(cli_call);
 }
