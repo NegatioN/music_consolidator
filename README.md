@@ -7,6 +7,8 @@ listen to all the music you like, in one location.
 ## Usage
 You can host a server by running `cd music_consolidator && npm start`, which will be accessible on `localhost:3000`.
 
+![GUI screenshot](resources/music_cons.jpg "GUI screenshot")
+
 This calls the underlaying script, but you may also use it directly, as such:
 
 
