@@ -4,9 +4,12 @@ Tired of having your music all over the place? Me too.
 This script transfers a song from Youtube to your Google Music account, so you can
 listen to all the music you like, in one location.
 
-## Usage
-To install, simply run `sudo ./install.sh`.
+## Installation
+Run `sudo ./install.sh`.
 
+And install either `ffmpeg` or `avconv` on your machine.
+
+## Usage
 You can host a server by running `cd music_consolidator && npm start`, which will be accessible on `localhost:3000`.
 
 ![GUI screenshot](resources/music_cons.jpg "GUI screenshot")
