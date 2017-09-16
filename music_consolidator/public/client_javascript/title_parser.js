@@ -5,8 +5,7 @@ function updateMetadata(){
     formLink.addEventListener('input', function(event) {
         if (val != this.value) {
             val = this.value;
-            var match = val.search(/(v=|\.be\/|\/v\/).{11}/g);
-            if (match != -1) {
+            if (matchYoutubeLink(val) != -1) {
                 getMetaData(val);
             }
         }
@@ -31,16 +30,17 @@ function getMetaData(link) {
 
     request.open('GET', '/metadata/'+encodedLink);
     request.send();
+}
 
+function matchYoutubeLink(text) {
+    return text.search(/(v=|\.be\/|\/v\/).{11}/g);
 }
 
 function guessTitle(responseText) {
-
-    var output = responseText.split(/\s*(?:-|\/|／)\s*/);
-    console.log(output);
-    return output;
+    return responseText.split(/\s*(?:-|\/|／)\s*/);
 }
 
 if (typeof exports !== 'undefined') {
-    exports.guessTitle = guessTitle
+    exports.guessTitle = guessTitle;
+    exports.matchYoutubeLink = matchYoutubeLink;
 }

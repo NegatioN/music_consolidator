@@ -19,4 +19,18 @@ describe('Title parser', function() {
             assert.equal(answer[1], "いきものがかり（Cover）");
         });
     });
+    describe('matchYoutubeLink() should match format of:', function() {
+        it('/v/-wtIMTCHWuI', function() {
+            const answer = title_parser.matchYoutubeLink("http://www.youtube.com/v/-wtIMTCHWuI");
+            assert.notEqual(answer, -1);
+        });
+        it('.be/-wtIMTCHWuI', function() {
+            const answer = title_parser.matchYoutubeLink("http://youtu.be/-wtIMTCHWuI");
+            assert.notEqual(answer, -1);
+        });
+        it('v=-wtIMTCHWuI', function() {
+            const answer = title_parser.matchYoutubeLink("http://www.youtube.com/watch?v=-wtIMTCHWuI");
+            assert.notEqual(answer, -1);
+        });
+    });
 });
