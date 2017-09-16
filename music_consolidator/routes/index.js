@@ -41,9 +41,8 @@ function authenticate(auth_code){
 
 function get_metadata(link) {
     const decoded = decodeURIComponent(link)
-    const cli_call = `youtube-dl --skip-download -e \"${decoded}\"`;
-    const child_process = require('child_process');
-    return child_process.execSync(cli_call).toString();
+    const cli_call = `youtube-dl --skip-download --get-title \"${decoded}\"`;
+    return execSync(cli_call).toString();
 }
 
 module.exports = router;
