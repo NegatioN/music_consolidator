@@ -36,7 +36,10 @@ function getMetaData(link) {
 }
 
 function guessTitle(responseText) {
-    return responseText.split(" - ");
+
+    var output = responseText.split(/\s*(?:-|\/|／)\s*/);
+    console.log(output);
+    return output;
 }
 
 if (typeof exports !== 'undefined') {
