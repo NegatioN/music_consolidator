@@ -5,4 +5,61 @@ body {
 
 a {
   color: #00B7FF;
+  display:block;
+  margin-bottom:20px;
+}
+
+#spacer {
+  height:40px;
+  
+}
+
+#loader-container {
+  transition:.3s;
+  opacity:0;
+}
+
+#loader-box, #loader-text {
+  display:inline-block;
+  float:left;
+}
+
+#loader-box {
+  width: 40px;
+  padding: 10px 0px;
+}
+
+#loader-text {
+  margin-top:15px;
+}
+
+#loader {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 2s linear infinite;
+    
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.clear {
+  clear:both;
+}
+
+label {
+  width:50px;
+  display:inline-block;
+}
+
+input[type=text] {
+  min-width:400px;
+}
+input[type=submit] {
+  margin-top:20px;
 }
