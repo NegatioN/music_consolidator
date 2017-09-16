@@ -15,7 +15,6 @@ router.get('/auth', function(req, res, next) {
 
 router.get('/metadata/:link', function(req, res, next) {
    var link = req.params.link;
-   
    res.send(get_metadata(link)); 
 });
 
@@ -41,11 +40,9 @@ function authenticate(auth_code){
 }
 
 function get_metadata(link) {
-    console.log("hi");
-    var decoded = decodeURIComponent(link)
+    const decoded = decodeURIComponent(link)
     const cli_call = `youtube-dl --skip-download -e \"${decoded}\"`;
-    
-    var child_process = require('child_process');
+    const child_process = require('child_process');
     return child_process.execSync(cli_call).toString();
 }
 

@@ -47,9 +47,7 @@ block content
         
         request.onreadystatechange = function(response) {
           if (this.readyState == 4 && this.status == 200) {
-            // console.log("title is: "+this.responseText);
-            var title = this.responseText;
-            var info = title.split(" - ");
+            var info = this.responseText.split(" - ");
             document.getElementById("artist-input").value = info[0];
             document.getElementById("title-input").value = info[1];
             loader.style.opacity = 0;
