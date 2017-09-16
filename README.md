@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/NegatioN/music_consolidator.svg)](https://travis-ci.org/NegatioN/music_consolidator)
+
 # Music Consolidator
 Tired of having your music all over the place? Me too.
 

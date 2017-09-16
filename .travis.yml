@@ -3,6 +3,8 @@ node_js:
   - "7"
 # command to install dependencies
 install:
+    - cd music_consolidator && npm install
+    - cd ..
     - npm install --global mocha chai
 
 script: mocha music_consolidator/test/test_title_parser.js
