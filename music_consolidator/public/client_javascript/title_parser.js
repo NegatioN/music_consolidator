@@ -5,7 +5,7 @@ function updateMetadata(){
     formLink.addEventListener('input', function(event) {
         if (val != this.value) {
             val = this.value;
-            var match = val.search(/[0-9A-Za-z]{11}/g);
+            var match = val.search(/(v=|\.be\/|\/v\/).{11}/g);
             if (match != -1) {
                 getMetaData(val);
             }
@@ -14,7 +14,6 @@ function updateMetadata(){
 }
 
 function getMetaData(link) {
-    console.log("metadata");
     var loader = document.getElementById("loader-container");
     loader.style.opacity = 1;
 
