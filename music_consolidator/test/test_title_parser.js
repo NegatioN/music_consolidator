@@ -18,6 +18,11 @@ describe('Title parser', function() {
             assert.equal(answer[0], "SAKURA");
             assert.equal(answer[1], "いきものがかり（Cover）");
         });
+        it('titles with ー (japanese dash)', function() {
+            const answer = title_parser.guessTitle("戦場のメリークリスマス");
+            assert.equal(answer[0], "戦場のメリ");
+            assert.equal(answer[1], "クリスマス");
+        });
     });
     describe('matchYoutubeLink() should match format of:', function() {
         it('/v/-wtIMTCHWuI', function() {

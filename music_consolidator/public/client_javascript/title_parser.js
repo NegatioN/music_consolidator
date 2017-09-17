@@ -37,7 +37,7 @@ function matchYoutubeLink(text) {
 }
 
 function guessTitle(responseText) {
-    return responseText.split(/\s*(?:-|\/|／)\s*/);
+    return responseText.split(/\s*(?:-|\/|／|ー)\s*/);
 }
 
 if (typeof exports !== 'undefined') {
