@@ -19,8 +19,8 @@ parser.add_argument('-sr', '--spotify-redirect', dest="spotify_redirect", defaul
                     help='Redicrect url for spotify-authentication. http://spotipy.readthedocs.io/en/latest/#authorized-requests')
 parser.add_argument('--merge', dest="merge", action='store_true',
                     help='Merge playlist if name already exists. Crude implementation.')
-parser.add_argument('--rm-feat', dest="rmfeat", action='store_true',
-                    help='Remove (feat artistname) from titles for google music. Messes up spotify search.')
+parser.add_argument('--rm-feat', dest="rmfeat", action='store_false',
+                    help='Remove (feat artistname) from titles for google music. Messes up spotify search, default on.')
 config = parser.parse_args()
 
 spotify_username = config.spotify_user
