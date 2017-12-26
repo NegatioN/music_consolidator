@@ -5,6 +5,9 @@ from gmusicapi import Mobileclient
 import spotipy
 from spotipy import util
 import argparse
+import re
+
+feat_regex = re.compile('(\([feat].*\))')
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-s', '--spotify-user', dest="spotify_user", help='Username for spotify', required=True)
@@ -14,8 +17,10 @@ parser.add_argument('-g', '--google-user', dest="g_user", help='Google user emai
 parser.add_argument('-gpw', '--google-pw', dest="g_password", help='Google user password', required=True)
 parser.add_argument('-sr', '--spotify-redirect', dest="spotify_redirect", default='http://localhost',
                     help='Redicrect url for spotify-authentication. http://spotipy.readthedocs.io/en/latest/#authorized-requests')
-parser.add_argument('-m', '--merge', dest="merge", action='store_true',
+parser.add_argument('--merge', dest="merge", action='store_true',
                     help='Merge playlist if name already exists. Crude implementation.')
+parser.add_argument('--rm-feat', dest="rmfeat", action='store_true',
+                    help='Remove (feat artistname) from titles for google music. Messes up spotify search.')
 config = parser.parse_args()
 
 spotify_username = config.spotify_user
@@ -45,6 +50,8 @@ for track in tracks:
         song = track['title']
         artist = track['artist']
         try:
+            if config.rmfeat:
+                song = feat_regex.sub('', song)
             resp = spotify_api.search('{} {}'.format(artist, song))
             track_uri = resp['tracks']['items'][0]['uri']
             collected_tracks.append(track_uri)
