@@ -2,3 +2,4 @@ youtube_dl==2017.7.30.1
 gmusicapi==10.1.2
 pathlib==1.0.1
 eyed3==0.8
+spotipy==2.4.4
